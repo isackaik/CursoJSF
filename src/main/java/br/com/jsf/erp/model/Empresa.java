@@ -31,7 +31,7 @@ public class Empresa implements Serializable {
 	private String nomeFantasia;
 	
 	@Column(name = "razao_social", nullable = false, length = 150)
-	private String razaoSocia;
+	private String razaoSocial;
 	
 	@Column(nullable = false, length = 18)
 	private String cnpj;
@@ -64,12 +64,12 @@ public class Empresa implements Serializable {
 		this.nomeFantasia = nomeFantasia;
 	}
 
-	public String getRazaoSocia() {
-		return razaoSocia;
+	public String getRazaoSocial() {
+		return razaoSocial;
 	}
 
-	public void setRazaoSocia(String razaoSocia) {
-		this.razaoSocia = razaoSocia;
+	public void setRazaoSocial(String razaoSocia) {
+		this.razaoSocial = razaoSocia;
 	}
 
 	public String getCnpj() {

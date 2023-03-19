@@ -7,32 +7,31 @@ import br.com.jsf.erp.model.Empresa;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-public class Empresas implements Serializable {
+public class EmpresaRepository implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private EntityManager manager;
 
-	public Empresas() {
+	public EmpresaRepository() {
 
 	}
 
-	public Empresas(EntityManager manager) {
+	public EmpresaRepository(EntityManager manager) {
 		this.manager = manager;
 	}
 
-	public Empresa porId(Long id) {
+	public Empresa findById(Long id) {
 		return manager.find(Empresa.class, id);
 	}
 
 	public List<Empresa> pesquisar(String nome) {
 		String jpql = "from Empresa where nomeFantasia like :nomeFantasia";
-		
-		TypedQuery<Empresa> query = manager
-				.createQuery(jpql, Empresa.class);
-		
+
+		TypedQuery<Empresa> query = manager.createQuery(jpql, Empresa.class);
+
 		query.setParameter("nomeFantasia", nome + "%");
-		
+
 		return query.getResultList();
 	}
 
@@ -41,7 +40,7 @@ public class Empresas implements Serializable {
 	}
 
 	public void remover(Empresa empresa) {
-		empresa = porId(empresa.getId());
+		empresa = findById(empresa.getId());
 		manager.remove(empresa);
 	}
 }
