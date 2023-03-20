@@ -3,9 +3,9 @@ package br.com.jsf.erp.repository;
 import java.util.List;
 
 import br.com.jsf.erp.model.Empresa;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 
 public class SchemaGeneration {

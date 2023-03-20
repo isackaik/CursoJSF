@@ -8,21 +8,23 @@
 		<class>br.com.jsf.erp.model.Empresa</class>
 		<class>br.com.jsf.erp.model.RamoAtividade</class>
 		<properties>
-			<property name="jakarta.persistence.jdbc.url"
+
+			<property name="javax.persistence.jdbc.url"
 				value="jdbc:postgresql://localhost:5432/cursoJSF" />
-			<property name="jakarta.persistence.jdbc.user"
+			<property name="javax.persistence.jdbc.user"
 				value="postgres" />
-			<property name="jakarta.persistence.jdbc.password"
+			<property name="javax.persistence.jdbc.password"
 				value="isac4562513" />
-			<property name="jakarta.persistence.jdbc.driver"
+			<property name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver" />
 
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property
-				name="jakarta.persistence.schema-generation.create-source"
+				name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
+			<property
+				name="javax.persistence.schema-generation.create-source"
 				value="metadata" />
-			<property name="jakarta.persistence.sql-load-script-source"
+			<property name="javax.persistence.sql-load-script-source"
 				value="META-INF/sql/dados-iniciais.sql" />
 
 			<property name="hibernate.show_sql" value="true" />

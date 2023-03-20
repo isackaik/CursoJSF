@@ -3,12 +3,13 @@ package br.com.jsf.erp.repository;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import br.com.jsf.erp.model.Empresa;
 import br.com.jsf.erp.model.RamoAtividade;
 import br.com.jsf.erp.model.TipoEmpresa;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 public class CamadaPersistencia {
 	
