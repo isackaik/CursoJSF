@@ -12,20 +12,24 @@
 
 </h:head>
 
+<f:metadata>
+	<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
+</f:metadata>
+
 <h:body>
 
 	<header>
 		<h:graphicImage library="cursoJSF" name="java.png" width="20" height="20" />
 	</header>
 
-	<h1>
+	<h2>
 		<strong>Cadastro de Empresas</strong>
-	</h1>
+	</h2>
+	
 	<div id="conteudo">
 		
-		
 		<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}" 
-				var="empresa" emptyMessage="Não preenchido">
+				var="empresa" emptyMessage="Nenhuma informação a ser exibida!">
 				<p:column headerText="Razão Social">
 					<h:outputText value="#{empresa.razaoSocial}"/>
 				</p:column>
@@ -43,7 +47,7 @@
 				</p:column>
 				
 				<p:column headerText="Ramo">
-					<h:outputText value="#{empresa.ramoAtividade.Descricao}"/>
+					<h:outputText value="#{empresa.ramoAtividade.descricao}"/>
 				</p:column>
 			
 		</p:dataTable>

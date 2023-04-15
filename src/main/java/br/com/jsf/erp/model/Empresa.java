@@ -34,7 +34,7 @@ public class Empresa implements Serializable {
 	@Column(name = "razao_social", nullable = false, length = 150)
 	private String razaoSocial;
 	
-	@Column(nullable = false, length = 18)
+	@Column(name = "cnpj", nullable = false, length = 18)
 	private String cnpj;
 	
 	@Temporal(TemporalType.DATE)
@@ -46,10 +46,10 @@ public class Empresa implements Serializable {
 	private RamoAtividade ramoAtividade;
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length = 30)
+	@Column(name = "tipo", nullable = false, length = 30)
 	private TipoEmpresa tipo;
 	
-	@Column(precision = 10, scale = 2)
+	@Column(name = "faturamento", precision = 10, scale = 2)
 	private BigDecimal faturamento;
 	
 	public BigDecimal getFaturamento() {

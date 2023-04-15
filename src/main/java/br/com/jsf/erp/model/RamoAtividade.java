@@ -20,7 +20,7 @@ public class RamoAtividade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, length = 150)
+	@Column(name = "descricao", nullable = false, length = 150)
 	private String descricao;
 
 	public Long getId() {
