@@ -16,6 +16,33 @@
 		</f:metadata>
 
 		<h:form>
+
+			<p:toolbar>
+				<f:facet name="left">
+					<p:inputText
+						placeholder="Pesquise pela empresa ou sua característica..." size="30"/>
+
+					<p:commandButton value="Pesquisar" icon="pi pi-search" />
+
+					<i class="pi pi-ellipsis-v" />
+
+					<p:commandButton value="Nova" icon="pi pi-plus" />
+
+					<i class="pi pi-ellipsis-v" />
+
+					<p:commandButton title="Editar" icon="pi pi-file-edit" />
+
+					<p:commandButton title="Excluir" icon="pi pi-trash" />
+
+					<i class="pi pi-ellipsis-v" />
+
+					<p:commandButton title="Exportar para o Excel"
+						icon="pi pi-file-excel" />
+				</f:facet>
+			</p:toolbar>
+			
+			<p:spacer height="20px"/>
+			
 			<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
 				var="empresa" emptyMessage="Nenhuma informação a ser exibida!"
 				paginator="true" rows="10" paginatorPosition="bottom">
