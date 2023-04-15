@@ -36,19 +36,19 @@
 					<h:outputText value="#{empresa.razaoSocial}" />
 				</p:column>
 
-				<p:column headerText="Nome Fantasia">
+				<p:column headerText="Nome Fantasia" sortBy="#{empresa.nomeFantasia}">
 					<h:outputText value="#{empresa.nomeFantasia}" />
 				</p:column>
 
-				<p:column headerText="CNPJ">
+				<p:column headerText="CNPJ" sortBy="#{empresa.cnpj}">
 					<h:outputText value="#{empresa.cnpj}" />
 				</p:column>
 
-				<p:column headerText="Tipo">
+				<p:column headerText="Tipo" sortBy="#{empresa.tipo}">
 					<h:outputText value="#{empresa.tipo}" />
 				</p:column>
 
-				<p:column headerText="Ramo">
+				<p:column headerText="Ramo" sortBy="#{empresa.ramoAtividade.descricao}">
 					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
 				</p:column>
 			</p:dataTable>
