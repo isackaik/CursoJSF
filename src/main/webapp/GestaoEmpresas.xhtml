@@ -20,16 +20,19 @@
 				<f:facet name="left">
 					<p:inputText
 						placeholder="Pesquise pela empresa ou sua característica..."
-						size="30" value="#{gestaoEmpresasBean.termoPesquisa}" />
+						size="30" value="#{gestaoEmpresasBean.termoPesquisa}"
+						id="termoPesquisa" />
 
 					<p:commandButton value="Pesquisar" icon="pi pi-search"
 						actionListener="#{gestaoEmpresasBean.pesquisar}"
-						update="empresasDataTable" />
+						update="empresasDataTable" process="@this termoPesquisa" />
 
 					<i class="pi pi-ellipsis-v" />
 
 					<p:commandButton value="Nova" icon="pi pi-plus"
-						onclick="PF('empresaDialogWidgetVar').show()" />
+						actionListener="#{gestaoEmpresasBean.prepararNovaEmpresa}"
+						oncomplete="PF('empresaDialogWidgetVar').show()"
+						update="empresaDialog" process="@this" />
 
 					<i class="pi pi-ellipsis-v" />
 
@@ -75,16 +78,21 @@
 			</p:dataTable>
 
 			<p:dialog header="Nova empresa" widgetVar="empresaDialogWidgetVar"
-				modal="true" resizable="false" closeOnEscape="true">
-				<h:panelGrid columns="2">
+				modal="true" resizable="false" closeOnEscape="true"
+				id="empresaDialog">
+				<h:panelGrid id="empresaPanelGrid" columns="2"
+					rendered="#{gestaoEmpresasBean.empresa ne null}">
 					<p:outputLabel value="Razão Social: " for="razaoSocial" />
-					<p:inputText id="razaoSocial" size="80" maxlength="150" />
+					<p:inputText id="razaoSocial" size="80" maxlength="150"
+						value="#{gestaoEmpresasBean.empresa.razaoSocial}" />
 
 					<p:outputLabel value="Nome Fantasia: " for="nomeFantasia" />
-					<p:inputText id="nomeFantasia" size="80" maxlength="150" />
+					<p:inputText id="nomeFantasia" size="80" maxlength="150"
+						value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
 
 					<p:outputLabel value="Tipo Empresa: " for="tipo" />
-					<p:selectOneMenu id="tipo">
+					<p:selectOneMenu id="tipo"
+						value="#{gestaoEmpresasBean.empresa.tipo}">
 						<f:selectItem itemLabel="Selecione..." />
 						<f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
 							var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
@@ -93,20 +101,26 @@
 
 					<p:outputLabel value="CNPJ: " for="cnpj" />
 					<p:inputMask id="cnpj" mask="99.999.999/9999-99" size="18"
-						maxlength="18" />
+						maxlength="18" value="#{gestaoEmpresasBean.empresa.cnpj}" />
 
 					<p:outputLabel value="Data da Fundação: " for="dataFundacao" />
-					<p:calendar id="dataFundacao" pattern="dd/MM/yyyy" size="30" />
+					<p:calendar id="dataFundacao" pattern="dd/MM/yyyy" size="30"
+						value="#{gestaoEmpresasBean.empresa.dataFundacao}" />
 
 					<p:outputLabel value="Ramo Atividade" for="ramoAtividade" />
 					<p:autoComplete id="ramoAtividade" size="80"
 						completeMethod="#{gestaoEmpresasBean.completarRamoAtividade}"
 						converter="#{gestaoEmpresasBean.ramoAtividadeConverter}"
 						var="ramoAtividade" itemLabel="#{ramoAtividade.descricao}"
-						itemValue="#{ramoAtividade}" />
+						itemValue="#{ramoAtividade}"
+						value="#{gestaoEmpresasBean.empresa.ramoAtividade}" />
 
 					<h:outputLabel />
-					<p:commandButton value="Salvar" />
+					<p:commandButton value="Salvar"
+						actionListener="#{gestaoEmpresasBean.salvar}"
+						update="empresasDataTable empresaPanelGrid"
+						oncomplete="PF('empresaDialogWidgetVar').hide()"
+						process="empresaDialog" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

@@ -18,28 +18,28 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table (name = "empresa")
+@Table(name = "empresa")
 public class Empresa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nome_fantasia", nullable = false, length = 150)
 	private String nomeFantasia;
-	
+
 	@Column(name = "razao_social", nullable = false, length = 150)
 	private String razaoSocial;
-	
+
 	@Column(name = "cnpj", nullable = false, length = 18)
 	private String cnpj;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_fundacao")
 	private Date dataFundacao;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ramo_atividade_id", nullable = false)
 	private RamoAtividade ramoAtividade;
@@ -95,7 +95,7 @@ public class Empresa implements Serializable {
 	public void setRamoAtividade(RamoAtividade ramoAtividade) {
 		this.ramoAtividade = ramoAtividade;
 	}
-	
+
 	public TipoEmpresa getTipo() {
 		return tipo;
 	}
@@ -125,5 +125,5 @@ public class Empresa implements Serializable {
 	public String toString() {
 		return "Empresa [id=" + id + "]";
 	}
-	
+
 }
