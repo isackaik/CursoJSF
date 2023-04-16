@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.jsf.erp.model.Empresa;
+import br.com.jsf.erp.model.TipoEmpresa;
 import br.com.jsf.erp.repository.EmpresaRepository;
 import br.com.jsf.erp.util.FacesMessages;
 
@@ -49,6 +50,10 @@ public class GestaoEmpresasBean implements Serializable {
 
 	public void setTermoPesquisa(String termoPesquisa) {
 		this.termoPesquisa = termoPesquisa;
+	}
+	
+	public TipoEmpresa[] getTiposEmpresa() {
+		return TipoEmpresa.values();
 	}
 
 }
