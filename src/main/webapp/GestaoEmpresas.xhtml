@@ -14,15 +14,17 @@
 		<f:metadata>
 			<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
 		</f:metadata>
-
+		
 		<h:form>
-
+			
 			<p:toolbar>
 				<f:facet name="left">
 					<p:inputText
-						placeholder="Pesquise pela empresa ou sua característica..." size="30"/>
+						placeholder="Pesquise pela empresa ou sua característica..." 
+						size="30" value="#{gestaoEmpresasBean.termoPesquisa}"/>
 
-					<p:commandButton value="Pesquisar" icon="pi pi-search" />
+					<p:commandButton value="Pesquisar" icon="pi pi-search" 
+						actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable"/>
 
 					<i class="pi pi-ellipsis-v" />
 
@@ -44,7 +46,7 @@
 			
 			<p:spacer height="20px"/>
 			
-			<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
+			<p:dataTable id="empresasDataTable" value="#{gestaoEmpresasBean.listaEmpresas}"
 				var="empresa" emptyMessage="Nenhuma informação a ser exibida!"
 				paginator="true" rows="10" paginatorPosition="bottom">
 
