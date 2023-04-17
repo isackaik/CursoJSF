@@ -16,6 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 @Table(name = "empresa")
@@ -27,19 +32,26 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	@Column(name = "nome_fantasia", nullable = false, length = 150)
 	private String nomeFantasia;
 
+	@NotEmpty
 	@Column(name = "razao_social", nullable = false, length = 150)
 	private String razaoSocial;
 
+	@CNPJ
+	@NotNull
 	@Column(name = "cnpj", nullable = false, length = 18)
 	private String cnpj;
 
+	@NotNull
+	@Past
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_fundacao")
 	private Date dataFundacao;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "ramo_atividade_id", nullable = false)
 	private RamoAtividade ramoAtividade;
